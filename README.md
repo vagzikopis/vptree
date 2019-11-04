@@ -1,7 +1,7 @@
 # Vantage Point Tree
 Implemenation of a Vantage Point tree using pthreads, OpenMP and Cilk frameworks.
 
-To create executables type "Make" in the command line.
+To create and run executables type "Make" in the command line.
 
 Executables:
 
