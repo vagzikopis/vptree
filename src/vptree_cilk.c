@@ -46,7 +46,6 @@ vptree * work(double *X, int n, int d, int index[])
   }
   //Find and store the distances from Vantage Point
   //If n > 1000 calculate distances using Cilk
-  //Select the median distance with quickselect
   //Otherwise sequentially
   double *distances;
   if(n>1000)
