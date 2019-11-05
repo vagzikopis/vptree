@@ -1,12 +1,14 @@
 # define the C/C++ compiler to use,default here is clang
-CC = gcc-5
+CC = gcc-7
 
-all:
-	cd src; $(CC) -o ../vptree_sequential vptree_sequential.c main.c -lm; cd ..
-	./vptree_sequential
-	cd src; $(CC) -o ../vptree_pthreads vptree_pthreads.c main.c -lm -pthread; cd ..
-	./vptree_pthreads
-	cd src; $(CC) -o ../vptree_cilk vptree_cilk.c main.c -fcilkplus -lm; cd ..
-	./vptree_cilk
-	cd src; $(CC) -o ../vptree_openmp vptree_openmp.c main.c -lm -fopenmp; cd ..
-	./vptree_openmp
+.PHONY: lib
+
+lib:
+	cd src; gcc -c vptree_sequential.c; cd ..
+	cd src; gcc -c vptree_pthreads.c; cd ..
+	cd src; gcc -c -fcilkplus vptree_cilk.c; cd ..
+	cd src; gcc -c vptree_openmp.c; cd ..
+	cd src; ar rcs ../lib/vptree_sequential.a vptree_sequential.o; cd ..
+	cd src; ar rcs ../lib/vptree_pthreads.a vptree_pthreads.o; cd ..
+	cd src; ar rcs ../lib/vptree_cilk.a vptree_cilk.o; cd ..
+	cd src; ar rcs ../lib/vptree_openmp.a vptree_openmp.o; cd ..
