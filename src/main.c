@@ -6,9 +6,9 @@ int main()
     double *X, time;
     struct timeval startwtime, endwtime;
 
-    n = 10000;
+    n = 100000;
     d = 20;
-
+    printf("\t\tData Dimensions N:%d\tD:%d\n",n,d);
     X = malloc(n*d*sizeof(double));
 
     //! Initialize data
